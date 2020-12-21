@@ -1,9 +1,9 @@
 //hold queryURL 
 
-var city = 'London'; 
-var queryURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=1f1a631dee508a73d37f378c49cda4b5";
-var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
-var queryURL3 = "api.openweathermap.org/data/2.5/weather?q={city name}&appid={1f1a631dee508a73d37f378c49cda4b5}";
+var city_name = 'London'; 
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
+//var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
+var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=1f1a631dee508a73d37f378c49cda4b5";
 var cities = ["Sydney", "Moscow", "Melbourne"];
 
 //$("#add-city").on("click", function(){
@@ -19,11 +19,11 @@ var cities = ["Sydney", "Moscow", "Melbourne"];
             $("#weatherView").append(weatherInfo);
             //apend weather information to html 
             //get heading 
-            var cityName = response.city.name;
+            var cityName = response.name;
             console.log(cityName);
             $("#heading").append(cityName);
             //get temp 
-            var cityTemp = response.list[0].main.temp;
+            var cityTemp = response.main.temp;
             console.log(cityTemp);
             var cityTemp = JSON.parse(cityTemp);
             //covert temp form Kelvin
@@ -32,12 +32,12 @@ var cities = ["Sydney", "Moscow", "Melbourne"];
             //$("#weatherView").append("<br>");
             $("#temperature").append(Math.floor(cityTempCel) + " °C");
             //get humidity 
-            var cityHumidity = response.list[0].main.humidity;
+            var cityHumidity = response.main.humidity;
             console.log(cityHumidity);
             //$("#weatherView").append("<br>");
             $("#humidity").append(cityHumidity + "%");
             //get windspeed
-            var cityWindSpeed = response.list[0].wind.speed;
+            var cityWindSpeed = response.wind.speed;
             console.log(cityWindSpeed);
             //$("#weatherView").append("<br>");
             $("#windSpeed").append(cityWindSpeed + " km/h");
@@ -80,3 +80,13 @@ $("#add-city").on("click", function(event) {
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
   });
+
+//   function setFavicons(favImg){
+//     let headTitle = document.querySelector('head');
+//     let setFavicon = document.createElement('link');
+//     setFavicon.setAttribute('rel', 'shortcut icon');
+//     setFavicon.setAttribute('href',FavImg);
+//     headTitle.appendChild(setFavicon);
+//   }
+
+//   setFavicons('https://spemer.com/image/favicon/favicon.png');

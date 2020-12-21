@@ -1,3 +1,5 @@
+$(document).ready(function (){
+
 //hold queryURL 
 
 // when button is click grab city name 
@@ -84,7 +86,6 @@ function my_button_handler(){
             //console.log("test")
             }
         toDisplay();
-        console.log("help");
     })
 //})
 //}
@@ -141,3 +142,4 @@ $("#add-city").on("click", function(event) {
     //renderButtons();
 
     //displayWeatherInfo();
+});

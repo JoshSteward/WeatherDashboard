@@ -1,11 +1,48 @@
 //hold queryURL 
 
-var city_name = 'London'; 
+// when button is click grab city name 
+/*
+$("#add-city").on("click", function(event) {
+    event.preventDefault();
+    var city_input = $("#city_input").val().trim();
+    console.log("test")
+    console.log(city_input);
+  //push new city into the array of cities
+    cities.push(city_input);
+    renderButtons()
+ });
+ */
+
+// link this to html button 
+let city_input = 'London'; 
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
 //var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
-var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
 var cities = ["Sydney", "Moscow", "Melbourne"];
 
+function my_button_handler(){
+    console.log("is this button clicked")
+    //city_input = $("#city_input").val().trim();
+    var city_input = $("#city_input")
+    var city_input = JSON.stringify(city_input);
+    console.log("test")
+    console.log(city_input);
+  //push new city into the array of cities
+    cities.push(city_input);
+    renderButtons()
+
+    $("#add-city").on("click", function(event) {
+        //event.preventDefault();
+        city_input = $("#city_input").val().trim();
+        console.log("test")
+        console.log(city_input);
+      //push new city into the array of cities
+        cities.push(city_input);
+        //renderButtons()
+     });
+}
+
+//function displayWeatherInfo() {
 //$("#add-city").on("click", function(){
     $.ajax({
         url: queryURL3,
@@ -44,10 +81,15 @@ var cities = ["Sydney", "Moscow", "Melbourne"];
             //get UV index
             //var cityUV = repsonse;
             //console.log(cityUV);
+            //console.log("test")
             }
         toDisplay();
+        console.log("help");
     })
 //})
+//}
+
+
 
 function renderButtons(){
     $("#buttons-view2").empty();
@@ -67,6 +109,7 @@ function renderButtons(){
 }
 renderButtons();
 
+/*
 // This function handles events where the add city button is clicked
 $("#add-city").on("click", function(event) {
     event.preventDefault();
@@ -79,14 +122,22 @@ $("#add-city").on("click", function(event) {
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
-  });
+});
+*/
 
-//   function setFavicons(favImg){
-//     let headTitle = document.querySelector('head');
-//     let setFavicon = document.createElement('link');
-//     setFavicon.setAttribute('rel', 'shortcut icon');
-//     setFavicon.setAttribute('href',FavImg);
-//     headTitle.appendChild(setFavicon);
-//   }
+/*
+// when button is click grab city name 
+    $("#add-city").on("click", function(event) {
+    event.preventDefault();
+    var city_input = $("#city_input").val().trim();
+    console.log(city_input);
+  //push new city into the array of cities
+    cities.push(city_input);
+    renderButtons()
+ });
+ */
 
-//   setFavicons('https://spemer.com/image/favicon/favicon.png');
+    //$(document).on("click",".weatherInfo", displayWeatherInfo);
+    //renderButtons();
+
+    //displayWeatherInfo();

@@ -15,8 +15,10 @@ $("#add-city").on("click", function(event) {
  });
  */
 
+ var city_input = 'London'; 
+
 // link this to html button 
-let city_input = 'London'; 
+//let city_input = 'London'; 
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
 //var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
 var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
@@ -25,7 +27,7 @@ var cities = ["Sydney", "Moscow", "Melbourne"];
 function my_button_handler(){
     console.log("is this button clicked")
     //city_input = $("#city_input").val().trim();
-    var city_input = $("#city_input")
+    city_input = $("#city_input").val();
     //var city_input = JSON.stringify(city_input);
     console.log("test")
     console.log(city_input);
@@ -113,7 +115,7 @@ renderButtons();
 $("#add-city").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var city= $("#city-input").val();
+    city= $("#city_input").val();
     //var city_new= (city);
     console.log(city);
 

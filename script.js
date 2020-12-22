@@ -45,6 +45,7 @@ function my_button_handler(){
      });
 }
 
+/*
 $("#add-city").click(displayWeatherInfo)
 
 function displayWeatherInfo() {
@@ -96,6 +97,7 @@ function displayWeatherInfo() {
             }
     );
 }
+*/
 
 function emptyDivs(){
     $("#heading").empty();
@@ -104,7 +106,24 @@ function emptyDivs(){
     $("#windSpeed").empty();
 }
 
-displayWeatherInfo();
+$("#add-city").click(fiveDayForecast)
+function fiveDayForecast(){
+    //city_input = $("#city_input").val().trim();
+    city_input = "London";
+    var queryURL2 = "api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+    console.log(queryURL2);
+
+    $.ajax({
+        url:queryURL2,
+        method:"GET"
+    }).then(function(response){
+        console.log(response);
+
+    });
+
+}
+
+//displayWeatherInfo();
 
 function renderButtons(){
     $("#buttons-view2").empty();

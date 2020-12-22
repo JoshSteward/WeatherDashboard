@@ -15,8 +15,7 @@ $("#add-city").on("click", function(event) {
  });
  */
 
- var city_input = 'London'; 
-
+var city_input = 'Sydney';
 // link this to html button 
 //let city_input = 'London'; 
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
@@ -46,14 +45,15 @@ function my_button_handler(){
      });
 }
 
-//function displayWeatherInfo() {
+function displayWeatherInfo() {
+    city_input = $("#city_input").val().trim();
 //$("#add-city").on("click", function(){
     $.ajax({
         url: queryURL3,
         method: "GET"
     }).then(function(response){
         console.log(response);
-        //create div to hold weather info 
+        //create div to hold weather info
         function toDisplay() { 
             var weatherInfo = $("<div class = 'weatherInfo'>")
             //append to html
@@ -90,7 +90,9 @@ function my_button_handler(){
         toDisplay();
     })
 //})
-//}
+}
+
+displayWeatherInfo();
 
 function renderButtons(){
     $("#buttons-view2").empty();
@@ -126,19 +128,6 @@ $("#add-city").on("click", function(event) {
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
 });
-
-
-/*
-// when button is click grab city name 
-    $("#add-city").on("click", function(event) {
-    event.preventDefault();
-    var city_input = $("#city_input").val().trim();
-    console.log(city_input);
-  //push new city into the array of cities
-    cities.push(city_input);
-    renderButtons()
- });
- */
 
     //$(document).on("click",".weatherInfo", displayWeatherInfo);
     //renderButtons();

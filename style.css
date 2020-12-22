@@ -2,7 +2,7 @@ nav {
     text-align: center;
 }
 
-#forecastCards {
+.card {
     display: flex;
     flex-direction: row;
     justify-content: center/space-between;

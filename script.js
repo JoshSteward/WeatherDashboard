@@ -45,7 +45,7 @@ function my_button_handler(){
      });
 }
 
-/*
+
 $("#add-city").click(displayWeatherInfo)
 
 function displayWeatherInfo() {
@@ -97,7 +97,7 @@ function displayWeatherInfo() {
             }
     );
 }
-*/
+
 
 function emptyDivs(){
     $("#heading").empty();
@@ -119,18 +119,27 @@ function fiveDayForecast(){
         console.log(response);
 
        for (i=4; i < response.list.length; i+=8) {
-            var forecastDate = $("<h5>"); 
-            var forecastPosition = i;
+            // var forecastDate = $("<h5>"); 
+            // var forecastPosition = i;
 
-            console.log("#forecast-date" + forecastPosition);
+            // console.log("#forecast-date" + forecastPosition);
 
-            console.log(response.list[i].main.temp);
-            var forecastTemp = response.list[i].main.temp;
-            var newForecastTemp = Math.floor((JSON.parse(forecastTemp)-273.15));
-            console.log(newForecastTemp);
-            $("#forecast-temp" + forecastPosition).append('Temperture: ' + newForecastTemp + "°C");
-          
-            
+            // console.log(response.list[i].main.temp);
+            // var forecastTemp = response.list[i].main.temp;
+            // var newForecastTemp = Math.floor((JSON.parse(forecastTemp)-273.15));
+            // console.log(newForecastTemp);
+            // $(".forecast-temp" + forecastPosition).append('Temperature: ' + newForecastTemp + "°C");
+          var card = ` 
+          <div class="card col-2">
+            <div class="card-body">
+                <h5 class="card-title"> ${response.list[i].dt_txt}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">Temperature: ${response.list[i].main.humidity}</p>
+                <p>Humidity: ${response.list[i].main.temp}</p>
+            </div>
+        </div>
+          `
+         $(".forecastCards").append(card);
 
         }
     });

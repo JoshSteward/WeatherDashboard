@@ -108,9 +108,8 @@ function emptyDivs(){
 
 $("#add-city").click(fiveDayForecast)
 function fiveDayForecast(){
-    //city_input = $("#city_input").val().trim();
-    city_input = "London";
-    var queryURL2 = "api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+    city_input = $("#city_input").val().trim();
+    var queryURL2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
     console.log(queryURL2);
 
     $.ajax({
@@ -119,6 +118,21 @@ function fiveDayForecast(){
     }).then(function(response){
         console.log(response);
 
+       for (i=4; i < response.list.length; i+=8) {
+            var forecastDate = $("<h5>"); 
+            var forecastPosition = i;
+
+            console.log("#forecast-date" + forecastPosition);
+
+            console.log(response.list[i].main.temp);
+            var forecastTemp = response.list[i].main.temp;
+            var newForecastTemp = Math.floor((JSON.parse(forecastTemp)-273.15));
+            console.log(newForecastTemp);
+            $("#forecast-temp" + forecastPosition).append('Temperture: ' + newForecastTemp + "°C");
+          
+            
+
+        }
     });
 
 }

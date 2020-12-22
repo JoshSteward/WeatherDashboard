@@ -1,3 +1,9 @@
 nav {
     text-align: center;
 }
+
+#forecastCards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center/space-between;
+}

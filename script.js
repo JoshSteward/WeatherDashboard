@@ -26,7 +26,7 @@ function my_button_handler(){
     console.log("is this button clicked")
     //city_input = $("#city_input").val().trim();
     var city_input = $("#city_input")
-    var city_input = JSON.stringify(city_input);
+    //var city_input = JSON.stringify(city_input);
     console.log("test")
     console.log(city_input);
   //push new city into the array of cities
@@ -90,8 +90,6 @@ function my_button_handler(){
 //})
 //}
 
-
-
 function renderButtons(){
     $("#buttons-view2").empty();
     for (var i = 0; i < cities.length; i++) {
@@ -110,21 +108,23 @@ function renderButtons(){
 }
 renderButtons();
 
-/*
+
 // This function handles events where the add city button is clicked
 $("#add-city").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var city = $("#city-input").val().trim();
+    var city= $("#city-input").val();
+    //var city_new= (city);
+    console.log(city);
 
     // The movie from the textbox is then added to our array
     cities.push(city);
-    console.log(city);
+    console.log(cities);
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
 });
-*/
+
 
 /*
 // when button is click grab city name 

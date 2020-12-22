@@ -51,6 +51,7 @@ function displayWeatherInfo() {
     city_input = $("#city_input").val().trim();
     var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
     console.log(queryURL3);
+    emptyDivs();
     $.ajax({
         url: queryURL3,
         method: "GET"
@@ -58,13 +59,17 @@ function displayWeatherInfo() {
         console.log(response);
         //create div to hold weather info
             var weatherInfo = $("<div class = 'weatherInfo'>")
+            console.log(weatherInfo);
             //append to html
             $("#weatherView").append(weatherInfo);
             //apend weather information to html 
             //get heading 
-            var cityName = response.name;
+            cityName = response.name;
             console.log(cityName);
-            $("#heading").append(cityName);
+            //var dateNow = moment().format('dddd, MMMM Do');
+            $("#heading").append('City: ' + cityName);
+            //$("#heading").text(dateNow);
+            //console.log(dateNow);             
             //get temp 
             var cityTemp = response.main.temp;
             console.log(cityTemp);
@@ -73,17 +78,17 @@ function displayWeatherInfo() {
             var cityTempCel = cityTemp - 273.15;
             console.log(Math.floor(cityTempCel));
             //$("#weatherView").append("<br>");
-            $("#temperature").append(Math.floor(cityTempCel) + " °C");
+            $("#temperature").append('Temperature: ' + Math.floor(cityTempCel) + " °C");
             //get humidity 
             var cityHumidity = response.main.humidity;
             console.log(cityHumidity);
             //$("#weatherView").append("<br>");
-            $("#humidity").append(cityHumidity + "%");
+            $("#humidity").append('Humidity: '+ cityHumidity + "%");
             //get windspeed
             var cityWindSpeed = response.wind.speed;
             console.log(cityWindSpeed);
             //$("#weatherView").append("<br>");
-            $("#windSpeed").append(cityWindSpeed + " km/h");
+            $("#windSpeed").append('Wind Speed: '+ cityWindSpeed + " km/h");
             //get UV index
             //var cityUV = repsonse;
             //console.log(cityUV);
@@ -92,6 +97,12 @@ function displayWeatherInfo() {
     );
 }
 
+function emptyDivs(){
+    $("#heading").empty();
+    $("#temperature").empty();
+    $("#humidity").empty();
+    $("#windSpeed").empty();
+}
 
 displayWeatherInfo();
 

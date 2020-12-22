@@ -15,6 +15,9 @@ $("#add-city").on("click", function(event) {
  });
  */
 
+var dateNow = moment().format('dddd, MMMM Do');
+console.log(dateNow);
+
 var city_input = 'Sydney';
 // link this to html button 
 //let city_input = 'London'; 
@@ -67,9 +70,9 @@ function displayWeatherInfo() {
             //get heading 
             cityName = response.name;
             console.log(cityName);
-            //var dateNow = moment().format('dddd, MMMM Do');
-            $("#heading").append('City: ' + cityName);
-            //$("#heading").text(dateNow);
+            var dateNow = moment().format('dddd, MMMM Do');
+            $("#heading").append(cityName);
+            $("#dateNow").text(dateNow);
             //console.log(dateNow);             
             //get temp 
             var cityTemp = response.main.temp;
@@ -104,6 +107,7 @@ function emptyDivs(){
     $("#temperature").empty();
     $("#humidity").empty();
     $("#windSpeed").empty();
+    $(".forecastCards").empty();
 }
 
 $("#add-city").click(fiveDayForecast)
@@ -129,13 +133,13 @@ function fiveDayForecast(){
             // var newForecastTemp = Math.floor((JSON.parse(forecastTemp)-273.15));
             // console.log(newForecastTemp);
             // $(".forecast-temp" + forecastPosition).append('Temperature: ' + newForecastTemp + "°C");
-          var card = ` 
+            var card = ` 
           <div class="card col-2">
             <div class="card-body">
-                <h5 class="card-title"> ${response.list[i].dt_txt}</h5>
+                <h6 class="card-title"> ${response.list[i].dt_txt}</h6>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                <p class="card-text">Temperature: ${response.list[i].main.humidity}</p>
-                <p>Humidity: ${response.list[i].main.temp}</p>
+                <p class="card-temp">Temperature: ${(Math.floor((response.list[i].main.temp)-273.15))}°C</p>
+                <p class="card-humidity">Humidity: ${response.list[i].main.humidity}%</p>
             </div>
         </div>
           `
@@ -154,7 +158,7 @@ function renderButtons(){
         //generate button 
         var a = $("<button>");
         //add class to button
-        a.addClass("btn btn-light");
+        a.addClass("btn btn-outline-secondary");
         //add data attribures 
         a.attr("data-name", cities[i]);
         //add text

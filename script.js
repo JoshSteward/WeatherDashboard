@@ -113,12 +113,12 @@ renderButtons();
 $("#add-city").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var city_input= $("#city-input").val();
+    var city= $("#city-input").val();
     //var city_new= (city);
-    console.log(city_input);
+    console.log(city);
 
     // The movie from the textbox is then added to our array
-    cities.push(city_input);
+    cities.push(city);
     console.log(cities);
 
     // Calling renderButtons which handles the processing of our movie array

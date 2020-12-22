@@ -20,7 +20,7 @@ var city_input = 'Sydney';
 //let city_input = 'London'; 
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
 //var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
-var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+//var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
 var cities = ["Sydney", "Moscow", "Melbourne"];
 
 function my_button_handler(){
@@ -45,16 +45,18 @@ function my_button_handler(){
      });
 }
 
+$("#add-city").click(displayWeatherInfo)
+
 function displayWeatherInfo() {
     city_input = $("#city_input").val().trim();
-//$("#add-city").on("click", function(){
+    var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+    console.log(queryURL3);
     $.ajax({
         url: queryURL3,
         method: "GET"
     }).then(function(response){
         console.log(response);
         //create div to hold weather info
-        function toDisplay() { 
             var weatherInfo = $("<div class = 'weatherInfo'>")
             //append to html
             $("#weatherView").append(weatherInfo);
@@ -87,10 +89,9 @@ function displayWeatherInfo() {
             //console.log(cityUV);
             //console.log("test")
             }
-        toDisplay();
-    })
-//})
+    );
 }
+
 
 displayWeatherInfo();
 

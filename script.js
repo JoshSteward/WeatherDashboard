@@ -113,7 +113,7 @@ function emptyDivs(){
 $("#add-city").click(fiveDayForecast)
 function fiveDayForecast(){
     city_input = $("#city_input").val().trim();
-    var queryURL2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
     console.log(queryURL2);
 
     $.ajax({

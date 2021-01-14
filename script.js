@@ -1,29 +1,11 @@
 $(document).ready(function (){
 
-//hold queryURL 
 
-// when button is click grab city name 
-/*
-$("#add-city").on("click", function(event) {
-    event.preventDefault();
-    var city_input = $("#city_input").val().trim();
-    console.log("test")
-    console.log(city_input);
-  //push new city into the array of cities
-    cities.push(city_input);
-    renderButtons()
- });
- */
 
 var dateNow = moment().format('dddd, MMMM Do');
 console.log(dateNow);
 
 var city_input = 'Sydney';
-// link this to html button 
-//let city_input = 'London'; 
-//var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=1f1a631dee508a73d37f378c49cda4b5"
-//var queryURL2 = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=20e76b66c69276d8cd4b395fb8c3775e" + city;
-//var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
 var cities = ["Sydney", "Moscow", "Melbourne"];
 
 function my_button_handler(){
@@ -123,16 +105,6 @@ function fiveDayForecast(){
         console.log(response);
 
        for (i=4; i < response.list.length; i+=8) {
-            // var forecastDate = $("<h5>"); 
-            // var forecastPosition = i;
-
-            // console.log("#forecast-date" + forecastPosition);
-
-            // console.log(response.list[i].main.temp);
-            // var forecastTemp = response.list[i].main.temp;
-            // var newForecastTemp = Math.floor((JSON.parse(forecastTemp)-273.15));
-            // console.log(newForecastTemp);
-            // $(".forecast-temp" + forecastPosition).append('Temperature: ' + newForecastTemp + "°C");
             var card = ` 
           <div class="card col-2">
             <div class="card-body">
@@ -187,8 +159,5 @@ $("#add-city").on("click", function(event) {
     renderButtons();
 });
 
-    //$(document).on("click",".weatherInfo", displayWeatherInfo);
-    //renderButtons();
 
-    //displayWeatherInfo();
 });

@@ -79,9 +79,27 @@ function displayWeatherInfo() {
             //var cityUV = repsonse;
             //console.log(cityUV);
             //console.log("test")
+            var lon = response.coord.lon;
+            var lat = response.coord.lat;
+            console.log(lon);
+            var uvIndexUrl = "http://api.openweathermap.org/data/2.5/uvi?" + "&lat=" + lat + "&lon=" + lon + "&appid=1f1a631dee508a73d37f378c49cda4b5" 
+            
+            $.ajax({
+                url: uvIndexUrl,
+                method: "GET"
+            }).then(function (response) {
+                var uvIndex = response.value
+                console.log(uvIndex);
+                $("#uvIndex").append('UV Index: ' + uvIndex);
+
+            });
             }
     );
+          
 }
+
+
+
 
 
 function emptyDivs(){
@@ -90,6 +108,7 @@ function emptyDivs(){
     $("#humidity").empty();
     $("#windSpeed").empty();
     $(".forecastCards").empty();
+    $("#uvIndex").empty();
 }
 
 $("#add-city").click(fiveDayForecast)
@@ -105,11 +124,14 @@ function fiveDayForecast(){
         console.log(response);
 
        for (i=4; i < response.list.length; i+=8) {
+            var icon = "http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png";
+            console.log(icon);
             var card = ` 
           <div class="card col-2">
             <div class="card-body">
                 <h6 class="card-title"> ${response.list[i].dt_txt}</h6>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <img class="icon" src=""http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png"">${icon}>
                 <p class="card-temp">Temperature: ${(Math.floor((response.list[i].main.temp)-273.15))}°C</p>
                 <p class="card-humidity">Humidity: ${response.list[i].main.humidity}%</p>
             </div>

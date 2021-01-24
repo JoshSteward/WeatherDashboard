@@ -3,6 +3,10 @@
 This application provides the weather in whichever city is searched. 
 It provides the current Temp, Humidity and Wind Speed as well as a 5 day forecast for the city. 
 
+This app can be accessed at: 
+https://joshsteward.github.io/WeatherDashboard/
+
+
 The application works such that: 
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
@@ -17,4 +21,9 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
+
+The app can be seen in the image below: 
+
+<img width="1329" alt="Screen Shot 2021-01-14 at 7 16 14 pm" src="https://user-images.githubusercontent.com/73278132/104562889-0cd3e680-569d-11eb-937a-8b63344a4606.png">
+
 

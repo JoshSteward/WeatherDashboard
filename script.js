@@ -131,7 +131,7 @@ function fiveDayForecast(){
             <div class="card-body">
                 <h6 class="card-title"> ${response.list[i].dt_txt}</h6>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                <img class="icon" src=""http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png"">${icon}>
+                <img class="icon" src="http://openweathermap.org/img/w/${response.list[2].weather[0].icon}.png"></img>
                 <p class="card-temp">Temperature: ${(Math.floor((response.list[i].main.temp)-273.15))}°C</p>
                 <p class="card-humidity">Humidity: ${response.list[i].main.humidity}%</p>
             </div>

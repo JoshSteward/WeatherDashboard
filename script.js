@@ -8,6 +8,12 @@ console.log(dateNow);
 var city_input = 'Sydney';
 var cities = ["Sydney", "Moscow", "Melbourne"];
 
+var citiesHistory = [];
+// Function to set cities from citiesHistory array into local storage
+function saveCities() {
+    localStorage.setItem("cities2", JSON.stringify(citiesHistory));
+}
+
 function my_button_handler(){
     console.log("is this button clicked")
     //city_input = $("#city_input").val().trim();
@@ -124,14 +130,14 @@ function fiveDayForecast(){
         console.log(response);
 
        for (i=4; i < response.list.length; i+=8) {
-            var icon = "http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png";
+            var icon = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
             console.log(icon);
             var card = ` 
           <div class="card col-2">
             <div class="card-body">
                 <h6 class="card-title"> ${response.list[i].dt_txt}</h6>
                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                <img class="icon" src="http://openweathermap.org/img/w/${response.list[2].weather[0].icon}.png"></img>
+                <img class="icon" src="http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png"></img>
                 <p class="card-temp">Temperature: ${(Math.floor((response.list[i].main.temp)-273.15))}°C</p>
                 <p class="card-humidity">Humidity: ${response.list[i].main.humidity}%</p>
             </div>
@@ -173,7 +179,7 @@ $("#add-city").on("click", function(event) {
     //var city_new= (city);
     console.log(city);
 
-    // The movie from the textbox is then added to our array
+    // The city from the textbox is then added to our array
     cities.push(city);
     console.log(cities);
 

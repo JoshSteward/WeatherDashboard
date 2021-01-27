@@ -11,7 +11,8 @@ var cities = ["Sydney", "Moscow", "Melbourne"];
 var citiesHistory = [];
 // Function to set cities from citiesHistory array into local storage
 function saveCities() {
-    localStorage.setItem("cities2", JSON.stringify(citiesHistory));
+    localStorage.setItem("cities2", JSON.stringify(cities));
+    console.log(cities)
 }
 
 function my_button_handler(){
@@ -105,9 +106,6 @@ function displayWeatherInfo() {
 }
 
 
-
-
-
 function emptyDivs(){
     $("#heading").empty();
     $("#temperature").empty();
@@ -122,6 +120,8 @@ function fiveDayForecast(){
     city_input = $("#city_input").val().trim();
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city_input + "&appid=1f1a631dee508a73d37f378c49cda4b5";
     console.log(queryURL2);
+    saveCities();
+
 
     $.ajax({
         url:queryURL2,
@@ -185,6 +185,15 @@ $("#add-city").on("click", function(event) {
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
+});
+
+$(document).ready(function() {
+    if(localStorage.getItem("cities2") !== null) {
+        console.log("DOIT")
+        var savedCity = localStorage.getItem("cities2");
+        var pushCities = JSON.parse(savedCity)
+        citiesHistory = citiesHistory.concat(pushCities)
+    }
 });
 
 

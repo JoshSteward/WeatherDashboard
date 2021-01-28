@@ -89,7 +89,7 @@ function displayWeatherInfo() {
             var lon = response.coord.lon;
             var lat = response.coord.lat;
             console.log(lon);
-            var uvIndexUrl = "http://api.openweathermap.org/data/2.5/uvi?" + "&lat=" + lat + "&lon=" + lon + "&appid=1f1a631dee508a73d37f378c49cda4b5" 
+            var uvIndexUrl = "https://api.openweathermap.org/data/2.5/uvi?" + "&lat=" + lat + "&lon=" + lon + "&appid=1f1a631dee508a73d37f378c49cda4b5" 
             
             $.ajax({
                 url: uvIndexUrl,
@@ -130,7 +130,7 @@ function fiveDayForecast(){
         console.log(response);
 
        for (i=4; i < response.list.length; i+=8) {
-            var icon = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
+            var icon = "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
             console.log(icon);
             var card = ` 
           <div class="card col-2">

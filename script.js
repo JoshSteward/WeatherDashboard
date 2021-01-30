@@ -6,7 +6,7 @@ var dateNow = moment().format('dddd, MMMM Do');
 console.log(dateNow);
 
 var city_input = 'Sydney';
-var cities = ["Sydney", "Moscow", "Melbourne"];
+var cities = [];
 
 var citiesHistory = [];
 // Function to set cities from citiesHistory array into local storage

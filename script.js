@@ -192,8 +192,8 @@ $(document).ready(function() {
         console.log("DOIT")
         var savedCity = localStorage.getItem("cities2");
         var pushCities = JSON.parse(savedCity)
-        citiesHistory = citiesHistory.concat(pushCities)
-    }
+        renderButtons();
+        }
 });
 
 

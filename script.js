@@ -168,7 +168,6 @@ function renderButtons(){
         console.log(cities[i])
     }
 }
-renderButtons();
 
 
 // This function handles events where the add city button is clicked
@@ -191,7 +190,7 @@ $(document).ready(function() {
     if(localStorage.getItem("cities2") !== null) {
         console.log("DOIT")
         var savedCity = localStorage.getItem("cities2");
-        var pushCities = JSON.parse(savedCity)
+        cities = JSON.parse(savedCity)
         renderButtons();
         }
 });
